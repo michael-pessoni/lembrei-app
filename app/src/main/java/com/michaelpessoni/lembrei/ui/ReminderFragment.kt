@@ -6,14 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.michaelpessoni.lembrei.R
+import com.michaelpessoni.lembrei.databinding.ReminderFragmentBinding
 import com.michaelpessoni.lembrei.viewmodels.ReminderViewModel
 
 class ReminderFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ReminderFragment()
-    }
 
     private lateinit var viewModel: ReminderViewModel
 
@@ -21,13 +21,20 @@ class ReminderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.reminder_fragment, container, false)
+        val binding = DataBindingUtil.inflate<ReminderFragmentBinding>(
+            inflater,
+            R.layout.reminder_fragment,
+            container,
+            false
+        )
+
+        binding.addButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_reminderFragment_to_addEditFragment)
+        }
+
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ReminderViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

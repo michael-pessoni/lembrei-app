@@ -6,14 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.michaelpessoni.lembrei.viewmodels.AddEditViewModel
 import com.michaelpessoni.lembrei.R
+import com.michaelpessoni.lembrei.databinding.AddEditFragmentBinding
 
 class AddEditFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = AddEditFragment()
-    }
 
     private lateinit var viewModel: AddEditViewModel
 
@@ -21,13 +19,9 @@ class AddEditFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_edit_fragment, container, false)
+        val binding: AddEditFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.add_edit_fragment, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddEditViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
