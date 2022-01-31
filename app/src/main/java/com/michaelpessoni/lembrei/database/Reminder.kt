@@ -3,18 +3,22 @@ package com.michaelpessoni.lembrei.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "reminders_table")
 data class Reminder(
+
     @PrimaryKey(autoGenerate = true)
-    val reminderId: Long,
+    var reminderId: Int = 0,
+
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String = "",
+
     @ColumnInfo(name = "description")
-    val description: String,
+    var description: String = "",
+
     @ColumnInfo(name = "date")
-    val date: Date,
+    var date: String = "",
+
     @ColumnInfo(name = "priority")
-    val priority: Boolean
+    var priority: Boolean = false
 )

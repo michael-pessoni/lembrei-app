@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Lembrei</string>
+    <string name="hint_title">Título</string>
+    <string name="hint_description">Descrição</string>
+    <string name="delete">Excluir</string>
+    <string name="save">Salvar</string>
+    <string name="all">Todos</string>
+    <string name="today">Hoje</string>
+    <string name="priorities">Prioridades</string>
+    <string name="done">Concluídos</string>
+    <string name="add_button">Add button</string>
+    <string name="starred_button">Starred Button</string>
+    <string name="priority">Prioridade</string>
 </resources>

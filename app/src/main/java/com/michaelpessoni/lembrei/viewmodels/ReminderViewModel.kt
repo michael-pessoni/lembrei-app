@@ -1,7 +1,14 @@
 package com.michaelpessoni.lembrei.viewmodels
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.michaelpessoni.lembrei.database.Reminder
+import com.michaelpessoni.lembrei.database.RemindersDAO
+import kotlinx.coroutines.*
 
-class ReminderViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ReminderViewModel(private val dataSource: RemindersDAO, application: Application) : AndroidViewModel(application) {
+
+    fun navigateToAddEdit(){
+
+    }
 }

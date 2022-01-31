@@ -13,7 +13,7 @@
             app:titleCentered="true"
             app:title="@string/app_name"
             app:menu="@menu/top_app_bar" />
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/myNavHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
