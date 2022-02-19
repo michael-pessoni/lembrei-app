@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/reminderFragment"
-        android:name="com.michaelpessoni.lembrei.ui.ReminderFragment"
+        android:name="com.michaelpessoni.lembrei.reminders.ReminderFragment"
         android:label="reminder_fragment"
         tools:layout="@layout/reminder_fragment" >
 <!--        <argument-->
@@ -19,12 +19,13 @@
     </fragment>
     <fragment
         android:id="@+id/addEditFragment"
-        android:name="com.michaelpessoni.lembrei.ui.AddEditFragment"
+        android:name="com.michaelpessoni.lembrei.addeditreminders.AddEditFragment"
         android:label="add_edit_fragment"
         tools:layout="@layout/add_edit_fragment" >
         <argument
             android:name="reminderKey"
-            app:argType="integer" />
+            app:argType="long"
+            />
         <action
             android:id="@+id/action_addEditFragment_to_reminderFragment"
             app:destination="@id/reminderFragment" />

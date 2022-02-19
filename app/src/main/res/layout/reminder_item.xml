@@ -4,47 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.widget.CompoundButton" />
         <variable
             name="reminder"
-            type="com.michaelpessoni.lembrei.database.Reminder" />
+            type="com.michaelpessoni.lembrei.data.Reminder" />
+        <variable
+            name="viewmodel"
+            type="com.michaelpessoni.lembrei.reminders.ReminderViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RadioButton
-        android:id="@+id/done_button"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:onClick="@{() -> viewmodel.openReminder(reminder.reminderId)}" >
+    <CheckBox
+        android:id="@+id/done_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:checked="@{reminder.completed}"
+        android:onClick="@{(view) -> viewmodel.completeReminder(reminder, ((CompoundButton)view).isChecked())}" />
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/title_textView"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/done_button"
-        app:layout_constraintTop_toTopOf="@id/done_button"
-        android:text="@{reminder.title}"
+        android:layout_gravity="center_vertical"
+        android:text="@{reminder.titleForList}"
         tools:text="@string/hint_title"
-        style="@style/TextAppearance.Material3.TitleMedium"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/date_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/title_textView"
-        app:layout_constraintTop_toBottomOf="@id/title_textView"
-        android:text="@{reminder.date}"
-        tools:text="@tools:sample/date/ddmmyy"/>
-    <ImageButton
-        android:id="@+id/starred_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/ic_star_outline"
-        android:backgroundTintMode="screen"
-        android:contentDescription="@string/starred_button" />
+        style="@style/TextAppearance.Material3.TitleLarge"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 </layout>

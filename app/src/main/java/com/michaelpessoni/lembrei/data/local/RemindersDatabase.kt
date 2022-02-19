@@ -1,9 +1,10 @@
-package com.michaelpessoni.lembrei.database
+package com.michaelpessoni.lembrei.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.michaelpessoni.lembrei.data.Reminder
 
 @Database(entities = [Reminder::class], version = 1)
 abstract class RemindersDatabase : RoomDatabase() {
@@ -26,6 +27,7 @@ abstract class RemindersDatabase : RoomDatabase() {
                         RemindersDatabase::class.java,
                         "reminders_database"
                     )
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
 

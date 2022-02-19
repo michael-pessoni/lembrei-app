@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Lembrei</string>
     <string name="hint_title">Título</string>
-    <string name="hint_description">Descrição</string>
+    <string name="hint_description">Do que você quer lembrar?</string>
     <string name="delete">Excluir</string>
     <string name="save">Salvar</string>
     <string name="all">Todos</string>
@@ -11,4 +11,7 @@
     <string name="add_button">Add button</string>
     <string name="starred_button">Starred Button</string>
     <string name="priority">Prioridade</string>
+    <string name="loading_error_message">Falha ao carregar o lembrete</string>
+    <string name="empty_reminder_message">O lembrete não pode estar vazio</string>
+    <string name="delete_completed_message">Lembretes concluídos foram deletados</string>
 </resources>
