@@ -40,12 +40,11 @@ class AddEditViewModel(private val dataSource: RemindersDAO): ViewModel() {
         isNewReminder = false
 
         viewModelScope.launch {
-            dataSource.get(reminderKey).let { reminder ->
-                if(reminder != null){
-                    onReminderLoaded(reminder)
-                } else{
-                    onReminderNotAvailable()
-                }
+            val reminder = dataSource.get(reminderKey)
+            if(reminder != null){
+                onReminderLoaded(reminder)
+            } else{
+                onReminderNotAvailable()
             }
         }
     }

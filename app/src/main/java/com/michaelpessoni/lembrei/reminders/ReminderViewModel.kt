@@ -31,6 +31,13 @@ class ReminderViewModel(private val dataSource: RemindersDAO, application: Appli
             dataSource.deleteCompletedTasks()
             showSnackbarMessage(R.string.delete_completed_message)
         }
+    } 
+    
+    fun clearAllReminders() {
+        viewModelScope.launch { 
+            dataSource.deleteAll()
+            showSnackbarMessage(R.string.clear_all_message)
+        }
     }
 
     fun completeReminder(reminder: Reminder, completed: Boolean) {

@@ -34,7 +34,8 @@
         android:layout_gravity="center_vertical"
         android:text="@{reminder.titleForList}"
         tools:text="@string/hint_title"
-        style="@style/TextAppearance.Material3.TitleLarge"/>
+        style="@style/TextAppearance.Material3.TitleLarge"
+        app:completedReminder="@{reminder.completed}"/>
 
 </LinearLayout>
 </layout>

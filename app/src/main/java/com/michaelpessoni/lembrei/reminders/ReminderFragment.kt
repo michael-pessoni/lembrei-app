@@ -1,9 +1,7 @@
 package com.michaelpessoni.lembrei.reminders
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -45,6 +43,8 @@ class ReminderFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
@@ -54,6 +54,24 @@ class ReminderFragment : Fragment() {
         setupListAdapter()
         setupNavigation()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_app_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when(item.itemId) {
+            R.id.menu_clear_completed -> {
+                viewModel.clearCompletedReminders()
+                true
+            }
+            R.id.menu_clear_all -> {
+                viewModel.clearAllReminders()
+                true
+            }
+            else -> false
+        }
+
 
     private fun setupSnackbar() {
         view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)

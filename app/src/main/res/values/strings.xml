@@ -14,4 +14,7 @@
     <string name="loading_error_message">Falha ao carregar o lembrete</string>
     <string name="empty_reminder_message">O lembrete não pode estar vazio</string>
     <string name="delete_completed_message">Lembretes concluídos foram deletados</string>
+    <string name="clear_completed">Deletar concluídos</string>
+    <string name="clear_all_message">Todos os lembretes foram deletados</string>
+    <string name="clear_all">Deletar todos</string>
 </resources>
