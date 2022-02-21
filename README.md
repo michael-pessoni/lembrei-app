@@ -22,3 +22,9 @@ This app uses the following techniques and [Jetpack](https://developer.android.c
 
 
 If you want to take a look on all screensshots, they are [here](https://drive.google.com/drive/folders/1nESkRVMxmx9brA0rIQmgOf1AYvEbc1Qy?usp=sharing)
+
+## Installers
+
+If you want to test the App in the Production mode, download the following APK installer:
+
+[Android .apk installer](https://drive.google.com/file/d/1cE-4h_5ctiWJEe6ZLcgpWfEVH2U5XPrW/view?usp=sharing)
