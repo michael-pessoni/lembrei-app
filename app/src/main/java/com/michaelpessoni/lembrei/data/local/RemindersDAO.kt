@@ -14,7 +14,7 @@ interface RemindersDAO {
     suspend fun update(reminder: Reminder)
 
     @Query("UPDATE reminders_table SET completed = :completed WHERE reminderId = :reminderId")
-    suspend fun updateCompleted(reminderId: Long, completed: Boolean)
+    suspend fun updateReminderCompletedStatus(reminderId: Long, completed: Boolean)
 
     @Query("SELECT * FROM reminders_table WHERE reminderId = :id")
     suspend fun get(id: Long) : Reminder?
@@ -26,7 +26,7 @@ interface RemindersDAO {
     suspend fun deleteAll()
 
     @Query("DELETE FROM reminders_table WHERE completed = 1")
-    suspend fun deleteCompletedTasks()
+    suspend fun deleteCompletedReminders()
 
     @Query("SELECT * FROM reminders_table")
     fun getAllReminders() : List<Reminder>
