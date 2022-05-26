@@ -15,7 +15,6 @@
  */
 package com.michaelpessoni.lembrei.util
 
-import androidx.test.espresso.IdlingResource
 import com.example.android.architecture.blueprints.todoapp.util.SimpleCountingIdlingResource
 
 /**

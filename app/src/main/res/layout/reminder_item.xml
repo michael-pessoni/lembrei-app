@@ -26,7 +26,7 @@
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:checked="@{reminder.completed}"
-        android:onClick="@{(view) -> viewmodel.completeReminder(reminder, ((CompoundButton)view).isChecked())}" />
+        android:onClick="@{(view) -> viewmodel.updateReminderCompleteStatus(reminder, ((CompoundButton)view).isChecked())}" />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"

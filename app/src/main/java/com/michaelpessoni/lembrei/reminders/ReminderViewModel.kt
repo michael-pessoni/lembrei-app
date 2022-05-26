@@ -1,12 +1,14 @@
 package com.michaelpessoni.lembrei.reminders
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.michaelpessoni.lembrei.Event
 import com.michaelpessoni.lembrei.R
 import com.michaelpessoni.lembrei.data.Reminder
 import com.michaelpessoni.lembrei.data.local.RemindersDAO
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ReminderViewModel(private val dataSource: RemindersDAO, application: Application) : AndroidViewModel(application) {
@@ -40,7 +42,7 @@ class ReminderViewModel(private val dataSource: RemindersDAO, application: Appli
         }
     }
 
-    fun completeReminder(reminder: Reminder, completed: Boolean) {
+    fun updateReminderCompleteStatus(reminder: Reminder, completed: Boolean) {
         viewModelScope.launch {
                 dataSource.updateCompleted(reminder.reminderId, completed)
 
