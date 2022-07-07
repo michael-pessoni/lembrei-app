@@ -2,8 +2,10 @@ package com.michaelpessoni.lembrei.di
 
 import android.content.Context
 import androidx.room.Room
-import com.michaelpessoni.lembrei.data.local.RemindersDao
-import com.michaelpessoni.lembrei.data.local.RemindersDatabase
+import com.michaelpessoni.lembrei.data.source.DefaultRemindersRepository
+import com.michaelpessoni.lembrei.data.source.RemindersRepository
+import com.michaelpessoni.lembrei.data.source.local.RemindersDao
+import com.michaelpessoni.lembrei.data.source.local.RemindersDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +32,11 @@ object AppModule {
     @Singleton
     fun providesDao(database: RemindersDatabase) : RemindersDao {
         return database.remindersDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepository(remindersDao: RemindersDao) : RemindersRepository {
+        return DefaultRemindersRepository(remindersDao)
     }
 }

@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.ui.reminders
+package com.michaelpessoni.lembrei
 
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData

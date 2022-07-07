@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.michaelpessoni.lembrei.R
 import com.michaelpessoni.lembrei.StubDataSource
 import com.michaelpessoni.lembrei.data.Reminder
+import com.michaelpessoni.lembrei.getOrAwaitValue
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
@@ -20,7 +21,7 @@ class ReminderViewModelTest{
     @Before
     fun setupViewModel() {
         stubDataSource = StubDataSource()
-        reminderViewModel = ReminderViewModel(stubDataSource, ApplicationProvider.getApplicationContext())
+        reminderViewModel = ReminderViewModel(stubDataSource)
     }
 
     @Test

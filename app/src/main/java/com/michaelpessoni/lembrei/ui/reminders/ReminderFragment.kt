@@ -11,7 +11,6 @@ import com.michaelpessoni.lembrei.R
 import com.michaelpessoni.lembrei.databinding.ReminderFragmentBinding
 import com.michaelpessoni.lembrei.util.setupSnackbar
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReminderFragment : Fragment() {

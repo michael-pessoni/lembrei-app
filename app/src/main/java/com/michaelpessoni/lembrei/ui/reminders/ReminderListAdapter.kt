@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.michaelpessoni.lembrei.data.Reminder
 import com.michaelpessoni.lembrei.databinding.ReminderItemBinding
-import javax.inject.Inject
 
 class ReminderListAdapter(private val viewModel: ReminderViewModel) : ListAdapter<Reminder, ReminderListAdapter.ReminderItemViewHolder>(
     ReminderDiffCallback()
@@ -25,7 +24,7 @@ class ReminderListAdapter(private val viewModel: ReminderViewModel) : ListAdapte
 
 
 
-    class ReminderItemViewHolder private constructor(val binding: ReminderItemBinding)
+    class ReminderItemViewHolder private constructor(private val binding: ReminderItemBinding)
         : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Reminder, viewModel: ReminderViewModel){

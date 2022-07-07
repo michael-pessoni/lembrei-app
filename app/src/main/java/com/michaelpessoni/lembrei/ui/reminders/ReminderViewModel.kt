@@ -1,17 +1,20 @@
 package com.michaelpessoni.lembrei.ui.reminders
 
-import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.michaelpessoni.lembrei.Event
 import com.michaelpessoni.lembrei.R
 import com.michaelpessoni.lembrei.data.Reminder
-import com.michaelpessoni.lembrei.data.local.RemindersDao
+import com.michaelpessoni.lembrei.data.source.RemindersRepository
+import com.michaelpessoni.lembrei.data.source.local.RemindersDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ReminderViewModel @Inject constructor(private val dataSource: RemindersDao) : ViewModel() {
+class ReminderViewModel @Inject constructor(private val dataSource: RemindersRepository) : ViewModel() {
 
 
     val reminderList = dataSource.observeReminders()

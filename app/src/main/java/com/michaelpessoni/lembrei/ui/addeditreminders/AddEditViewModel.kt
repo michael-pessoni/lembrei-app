@@ -7,13 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.michaelpessoni.lembrei.Event
 import com.michaelpessoni.lembrei.R
 import com.michaelpessoni.lembrei.data.Reminder
-import com.michaelpessoni.lembrei.data.local.RemindersDao
+import com.michaelpessoni.lembrei.data.source.RemindersRepository
+import com.michaelpessoni.lembrei.data.source.local.RemindersDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddEditViewModel @Inject constructor(private val dataSource: RemindersDao): ViewModel() {
+class AddEditViewModel @Inject constructor(private val dataSource: RemindersRepository): ViewModel() {
 
     val title = MutableLiveData<String>()
 

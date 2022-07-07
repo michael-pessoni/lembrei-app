@@ -15,8 +15,6 @@
  */
 package com.michaelpessoni.lembrei.util
 
-import com.example.android.architecture.blueprints.todoapp.util.SimpleCountingIdlingResource
-
 /**
  * Contains a static reference to [IdlingResource], only available in the 'mock' build type.
  */

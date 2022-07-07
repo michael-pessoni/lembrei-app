@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.data.local
+package com.michaelpessoni.lembrei.data.source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
