@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4

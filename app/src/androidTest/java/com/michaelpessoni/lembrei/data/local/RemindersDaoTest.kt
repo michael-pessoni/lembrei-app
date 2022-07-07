@@ -42,9 +42,9 @@ class RemindersDaoTest {
     @Test
     fun insertReminderAndGetById() = runBlockingTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao.insert(reminder)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao.get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.isEmpty, `is`(reminder.isEmpty))
@@ -57,12 +57,12 @@ class RemindersDaoTest {
     @Test
     fun updateReminderAndGetById() = runBlockingTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao.insert(reminder)
 
         val updatedReminder = Reminder("newTitle", "newDescription", true, reminder.reminderId)
-        database.remindersDatabaseDAO.update(updatedReminder)
+        database.remindersDao.update(updatedReminder)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao.get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.reminderId, `is`(updatedReminder.reminderId))
@@ -74,11 +74,11 @@ class RemindersDaoTest {
     @Test
     fun updateReminderCompletedStatus() = runBlockingTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao.insert(reminder)
 
-        database.remindersDatabaseDAO.updateReminderCompletedStatus(reminder.reminderId, true)
+        database.remindersDao.updateReminderCompletedStatus(reminder.reminderId, true)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao.get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.isCompleted, `is`(true))
@@ -87,22 +87,22 @@ class RemindersDaoTest {
     @Test
     fun deleteCompletedReminders() = runBlockingTest {
         val reminder1 = Reminder("title1", "desc1", false)
-        database.remindersDatabaseDAO.insert(reminder1)
+        database.remindersDao.insert(reminder1)
         val reminder2 = Reminder("title2", "desc2", false)
-        database.remindersDatabaseDAO.insert(reminder2)
+        database.remindersDao.insert(reminder2)
         val reminder3 = Reminder("title3", "desc3", true)
-        database.remindersDatabaseDAO.insert(reminder3)
+        database.remindersDao.insert(reminder3)
         val reminder4 = Reminder("title4", "desc4", true)
-        database.remindersDatabaseDAO.insert(reminder4)
+        database.remindersDao.insert(reminder4)
 
 
-        var remindersList = database.remindersDatabaseDAO.getAllReminders()
+        var remindersList = database.remindersDao.getAllReminders()
 
         assertThat(remindersList.size, `is`(4))
 
-        database.remindersDatabaseDAO.deleteCompletedReminders()
+        database.remindersDao.deleteCompletedReminders()
 
-        remindersList = database.remindersDatabaseDAO.getAllReminders()
+        remindersList = database.remindersDao.getAllReminders()
 
         assertThat(remindersList.size, `is`(2))
     }

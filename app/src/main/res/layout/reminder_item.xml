@@ -10,7 +10,7 @@
             type="com.michaelpessoni.lembrei.data.Reminder" />
         <variable
             name="viewmodel"
-            type="com.michaelpessoni.lembrei.reminders.ReminderViewModel" />
+            type="com.michaelpessoni.lembrei.ui.reminders.ReminderViewModel" />
     </data>
 
 <LinearLayout

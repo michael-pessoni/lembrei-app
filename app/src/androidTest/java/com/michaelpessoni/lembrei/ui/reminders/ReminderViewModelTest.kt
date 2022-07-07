@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
@@ -28,7 +28,7 @@ class ReminderViewModelTest{
 
     @Before
     fun setupViewModel() {
-        reminderViewModel = ReminderViewModel(database.remindersDatabaseDAO,
+        reminderViewModel = ReminderViewModel(database.remindersDao,
             ApplicationProvider.getApplicationContext()
         )
 
@@ -65,11 +65,11 @@ class ReminderViewModelTest{
     @Test
     fun updateReminderCompleteStatus_completeReminder() = runBlocking {
         val reminder = Reminder("title", "description")
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao.insert(reminder)
 
         reminderViewModel.updateReminderCompleteStatus(reminder, true)
 
-        val returnReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val returnReminder = database.remindersDao.get(reminder.reminderId)
 
         MatcherAssert.assertThat(returnReminder?.isCompleted, CoreMatchers.`is`(true))
     }

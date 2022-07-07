@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import android.graphics.Paint
 import android.widget.TextView

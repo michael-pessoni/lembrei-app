@@ -3,9 +3,9 @@ package com.michaelpessoni.lembrei
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.michaelpessoni.lembrei.data.Reminder
-import com.michaelpessoni.lembrei.data.local.RemindersDAO
+import com.michaelpessoni.lembrei.data.local.RemindersDao
 
-class StubDataSource : RemindersDAO{
+class StubDataSource : RemindersDao{
     override suspend fun insert(reminder: Reminder) {
         TODO("Not yet implemented")
     }

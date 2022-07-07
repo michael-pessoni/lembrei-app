@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".reminders.ReminderFragment">
+    tools:context="com.michaelpessoni.lembrei.ui.reminders.ReminderFragment">
     <data>
         <variable
             name="viewModel"
-            type="com.michaelpessoni.lembrei.reminders.ReminderViewModel" />
+            type="com.michaelpessoni.lembrei.ui.reminders.ReminderViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
