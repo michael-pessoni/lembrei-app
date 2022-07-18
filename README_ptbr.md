@@ -15,6 +15,7 @@ Esse aplicativo usa os seguintes conceitos e componentes da biblioteca [Jetpack]
 - [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) e [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data) para navegar e passar dados entre os Fragments.
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) para vincular a UI e os dados.
 - Kotlin [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) para tarefas assíncronas.
+- [Dagger/Hilt](https://dagger.dev/hilt/) para injeção de dependências.
 
 # Capturas de tela
 
