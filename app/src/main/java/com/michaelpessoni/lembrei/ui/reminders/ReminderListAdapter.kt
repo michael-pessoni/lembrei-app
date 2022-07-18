@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,7 @@ class ReminderListAdapter(private val viewModel: ReminderViewModel) : ListAdapte
 
 
 
-    class ReminderItemViewHolder private constructor(val binding: ReminderItemBinding)
+    class ReminderItemViewHolder private constructor(private val binding: ReminderItemBinding)
         : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: Reminder, viewModel: ReminderViewModel){

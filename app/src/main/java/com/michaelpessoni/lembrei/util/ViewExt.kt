@@ -31,7 +31,7 @@ fun View.setupSnackbar(
     timeLength: Int
 ) {
 
-    snackbarEvent.observe(lifecycleOwner, Observer { event ->
+    snackbarEvent.observe(lifecycleOwner, { event ->
         event.getContentIfNotHandled()?.let {
             showSnackbar(context.getString(it), timeLength)
         }

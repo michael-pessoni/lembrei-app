@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".addeditreminders.AddEditFragment">
+    tools:context=".ui.addeditreminders.AddEditFragment">
     <data>
         <variable
             name="viewModel"
-            type="com.michaelpessoni.lembrei.addeditreminders.AddEditViewModel" />
+            type="com.michaelpessoni.lembrei.ui.addeditreminders.AddEditViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

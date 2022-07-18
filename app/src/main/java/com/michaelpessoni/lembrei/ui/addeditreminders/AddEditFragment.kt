@@ -1,25 +1,23 @@
-package com.michaelpessoni.lembrei.addeditreminders
+package com.michaelpessoni.lembrei.ui.addeditreminders
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.michaelpessoni.lembrei.EventObserver
-import com.michaelpessoni.lembrei.R
-import com.michaelpessoni.lembrei.data.local.RemindersDatabase
 import com.michaelpessoni.lembrei.databinding.AddEditFragmentBinding
 import com.michaelpessoni.lembrei.util.setupSnackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddEditFragment : Fragment() {
 
-    private lateinit var viewModel: AddEditViewModel
+    private val viewModel: AddEditViewModel by viewModels()
 
     private lateinit var binding: AddEditFragmentBinding
 
@@ -29,15 +27,7 @@ class AddEditFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= DataBindingUtil.inflate(
-            inflater, R.layout.add_edit_fragment, container, false)
-
-        val application = requireNotNull(this.activity).application
-
-        val dataSource = RemindersDatabase.getInstance(application).remindersDatabaseDAO
-        val viewModelFactory = AddEditViewModelFactory(dataSource)
-
-        viewModel = ViewModelProvider(this, viewModelFactory)[AddEditViewModel::class.java]
+        binding= AddEditFragmentBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
 
@@ -64,11 +54,4 @@ class AddEditFragment : Fragment() {
         })
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-    }
 }

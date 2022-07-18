@@ -1,11 +1,11 @@
-package com.michaelpessoni.lembrei.data.local
+package com.michaelpessoni.lembrei.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.michaelpessoni.lembrei.data.Reminder
 
 @Dao
-interface RemindersDAO {
+interface RemindersDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(reminder: Reminder)

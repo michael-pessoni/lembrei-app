@@ -1,11 +1,14 @@
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.michaelpessoni.lembrei.data.Reminder
-import com.michaelpessoni.lembrei.data.local.RemindersDatabase
+import com.michaelpessoni.lembrei.data.source.DefaultRemindersRepository
+import com.michaelpessoni.lembrei.data.source.RemindersRepository
+import com.michaelpessoni.lembrei.data.source.local.RemindersDatabase
+import com.michaelpessoni.lembrei.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
@@ -23,14 +26,13 @@ class ReminderViewModelTest{
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    private lateinit var dataSource: RemindersRepository
     private lateinit var database: RemindersDatabase
     private lateinit var reminderViewModel: ReminderViewModel
 
     @Before
     fun setupViewModel() {
-        reminderViewModel = ReminderViewModel(database.remindersDatabaseDAO,
-            ApplicationProvider.getApplicationContext()
-        )
+        reminderViewModel = ReminderViewModel(dataSource)
 
     }
 
@@ -42,6 +44,7 @@ class ReminderViewModelTest{
         )
             .allowMainThreadQueries()
             .build()
+        dataSource = DefaultRemindersRepository(database.remindersDao())
     }
 
     @After
@@ -65,11 +68,11 @@ class ReminderViewModelTest{
     @Test
     fun updateReminderCompleteStatus_completeReminder() = runBlocking {
         val reminder = Reminder("title", "description")
-        database.remindersDatabaseDAO.insert(reminder)
+        dataSource.insert(reminder)
 
         reminderViewModel.updateReminderCompleteStatus(reminder, true)
 
-        val returnReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val returnReminder = dataSource.get(reminder.reminderId)
 
         MatcherAssert.assertThat(returnReminder?.isCompleted, CoreMatchers.`is`(true))
     }

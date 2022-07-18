@@ -1,22 +1,21 @@
-package com.michaelpessoni.lembrei.reminders
+package com.michaelpessoni.lembrei.ui.reminders
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.michaelpessoni.lembrei.EventObserver
 import com.michaelpessoni.lembrei.R
-import com.michaelpessoni.lembrei.data.local.RemindersDatabase
 import com.michaelpessoni.lembrei.databinding.ReminderFragmentBinding
 import com.michaelpessoni.lembrei.util.setupSnackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReminderFragment : Fragment() {
 
-    private lateinit var viewModel: ReminderViewModel
+    private val viewModel: ReminderViewModel by viewModels()
 
     private lateinit var listAdapter: ReminderListAdapter
     private lateinit var  binding: ReminderFragmentBinding
@@ -26,24 +25,17 @@ class ReminderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
+        binding = ReminderFragmentBinding.inflate(
             inflater,
-            R.layout.reminder_fragment,
             container,
             false
         )
 
-        val application = requireNotNull(this.activity).application
-
-        val dataSource = RemindersDatabase.getInstance(application).remindersDatabaseDAO
-
-        val viewModelFactory = ReminderViewModelFactory(dataSource, application)
-
-        viewModel = ViewModelProvider(this, viewModelFactory)[ReminderViewModel::class.java]
 
         binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
+
 
         return binding.root
     }
@@ -80,9 +72,9 @@ class ReminderFragment : Fragment() {
     private fun setupListAdapter() {
         listAdapter = ReminderListAdapter(viewModel)
         binding.reminderList.adapter = listAdapter
-        viewModel.reminderList.observe(viewLifecycleOwner, Observer {
+        viewModel.reminderList.observe(viewLifecycleOwner) {
             listAdapter.submitList(it)
-        })
+        }
 
     }
 

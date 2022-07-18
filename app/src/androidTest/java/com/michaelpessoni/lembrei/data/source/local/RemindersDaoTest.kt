@@ -1,4 +1,4 @@
-package com.michaelpessoni.lembrei.data.local
+package com.michaelpessoni.lembrei.data.source.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.michaelpessoni.lembrei.data.Reminder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
@@ -40,11 +40,11 @@ class RemindersDaoTest {
     }
 
     @Test
-    fun insertReminderAndGetById() = runBlockingTest {
+    fun insertReminderAndGetById() = runTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao().insert(reminder)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao().get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.isEmpty, `is`(reminder.isEmpty))
@@ -55,14 +55,14 @@ class RemindersDaoTest {
     }
 
     @Test
-    fun updateReminderAndGetById() = runBlockingTest {
+    fun updateReminderAndGetById() = runTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao().insert(reminder)
 
         val updatedReminder = Reminder("newTitle", "newDescription", true, reminder.reminderId)
-        database.remindersDatabaseDAO.update(updatedReminder)
+        database.remindersDao().update(updatedReminder)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao().get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.reminderId, `is`(updatedReminder.reminderId))
@@ -72,37 +72,37 @@ class RemindersDaoTest {
     }
 
     @Test
-    fun updateReminderCompletedStatus() = runBlockingTest {
+    fun updateReminderCompletedStatus() = runTest {
         val reminder = Reminder("title", "desc", false)
-        database.remindersDatabaseDAO.insert(reminder)
+        database.remindersDao().insert(reminder)
 
-        database.remindersDatabaseDAO.updateReminderCompletedStatus(reminder.reminderId, true)
+        database.remindersDao().updateReminderCompletedStatus(reminder.reminderId, true)
 
-        val loadedReminder = database.remindersDatabaseDAO.get(reminder.reminderId)
+        val loadedReminder = database.remindersDao().get(reminder.reminderId)
 
         assertThat(loadedReminder as Reminder, notNullValue())
         assertThat(loadedReminder.isCompleted, `is`(true))
     }
 
     @Test
-    fun deleteCompletedReminders() = runBlockingTest {
+    fun deleteCompletedReminders() = runTest {
         val reminder1 = Reminder("title1", "desc1", false)
-        database.remindersDatabaseDAO.insert(reminder1)
+        database.remindersDao().insert(reminder1)
         val reminder2 = Reminder("title2", "desc2", false)
-        database.remindersDatabaseDAO.insert(reminder2)
+        database.remindersDao().insert(reminder2)
         val reminder3 = Reminder("title3", "desc3", true)
-        database.remindersDatabaseDAO.insert(reminder3)
+        database.remindersDao().insert(reminder3)
         val reminder4 = Reminder("title4", "desc4", true)
-        database.remindersDatabaseDAO.insert(reminder4)
+        database.remindersDao().insert(reminder4)
 
 
-        var remindersList = database.remindersDatabaseDAO.getAllReminders()
+        var remindersList = database.remindersDao().getAllReminders()
 
         assertThat(remindersList.size, `is`(4))
 
-        database.remindersDatabaseDAO.deleteCompletedReminders()
+        database.remindersDao().deleteCompletedReminders()
 
-        remindersList = database.remindersDatabaseDAO.getAllReminders()
+        remindersList = database.remindersDao().getAllReminders()
 
         assertThat(remindersList.size, `is`(2))
     }

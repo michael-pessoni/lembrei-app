@@ -1,54 +1,48 @@
-package com.michaelpessoni.lembrei
+package com.michaelpessoni.lembrei.data.source
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.michaelpessoni.lembrei.data.Reminder
-import com.michaelpessoni.lembrei.data.source.RemindersRepository
 import com.michaelpessoni.lembrei.data.source.local.RemindersDao
+import javax.inject.Inject
 
-class StubDataSource : RemindersRepository{
+class DefaultRemindersRepository @Inject constructor(val remindersDao: RemindersDao) : RemindersRepository {
     override suspend fun insert(reminder: Reminder) {
-        TODO("Not yet implemented")
+        remindersDao.insert(reminder)
     }
 
     override suspend fun update(reminder: Reminder) {
-        TODO("Not yet implemented")
+        remindersDao.update(reminder)
     }
 
     override suspend fun updateReminderCompletedStatus(reminderId: Long, completed: Boolean) {
-        TODO("Not yet implemented")
+        remindersDao.updateReminderCompletedStatus(reminderId, completed)
     }
 
     override suspend fun get(id: Long): Reminder? {
-        TODO("Not yet implemented")
+        return remindersDao.get(id)
     }
 
     override suspend fun deleteById(id: Long) {
-        TODO("Not yet implemented")
+        remindersDao.deleteById(id)
     }
 
     override suspend fun deleteAll() {
-        TODO("Not yet implemented")
+        remindersDao.deleteAll()
     }
 
     override suspend fun deleteCompletedReminders() {
-        // No Op
+        remindersDao.deleteCompletedReminders()
     }
 
     override fun getAllReminders(): List<Reminder> {
-        TODO("Not yet implemented")
+        return remindersDao.getAllReminders()
     }
 
     override fun observeReminders(): LiveData<List<Reminder>> {
-        val emptyList = emptyList<Reminder>()
-        val _liveData = MutableLiveData<List<Reminder>>()
-        _liveData.value = emptyList
-        return _liveData
+        return remindersDao.observeReminders()
     }
 
     override suspend fun getNewReminder(): Reminder? {
-        TODO("Not yet implemented")
+        return remindersDao.getNewReminder()
     }
-
-
 }
