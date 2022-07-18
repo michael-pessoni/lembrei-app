@@ -15,6 +15,7 @@ This app uses the following techniques and [Jetpack](https://developer.android.c
 - [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) and [Safe Args](https://developer.android.com/guide/navigation/navigation-pass-data) to navigate and pass data between fragments.
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) to vinculate the UI and the data.
 - Kotlin [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) for assychornous tasks.
+- [Dagger/Hilt](https://dagger.dev/hilt/) for dependency injection.
 
 # Screenshots
 
