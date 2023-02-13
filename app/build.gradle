@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -108,6 +110,10 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:3.4.0"
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
 
+    // Firebase dependencies
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
 
 }
