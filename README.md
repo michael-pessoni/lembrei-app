@@ -16,6 +16,7 @@ This app uses the following techniques and [Jetpack](https://developer.android.c
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding) to vinculate the UI and the data.
 - Kotlin [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) for assychornous tasks.
 - [Dagger/Hilt](https://dagger.dev/hilt/) for dependency injection.
+- [Firebase Crashalytics](https://firebase.google.com/docs/crashlytics?hl=pt-br) for crash reporting.
 
 # Screenshots
 
